@@ -1,0 +1,67 @@
+
+// This is component definition file that specifies the internal content and external interfaces
+// of reusable software components.
+//
+// For more details on the component definition (.cdef) file format see:
+// https://docs.legato.io/latest/defFilesCdef.html
+
+
+// Source code files.
+sources:
+{
+    xmlTest.c
+}
+
+
+
+// Bind resources from the target module into your application.
+requires:
+{
+    // IPC APIs used by this component.
+    api:
+    {
+ 
+    }
+    
+    // File paths local to your target module.
+    file:
+    {
+        
+    }
+    
+    // Directories on your target module to make accessible to the app.
+    dir:
+    {
+       
+    }
+    
+    // Linux filesystem device paths.
+   device:
+   {
+       
+   }
+   component:
+   {
+   }
+   
+    
+    // Shared libraries pre-installed on the module.
+    lib:
+    {      
+        xml2
+    }   
+
+}
+
+bundles:
+{
+    file:
+    {
+       /home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/lib/libxml2.so /lib/
+    }
+    
+}
+
+cflags:
+{
+}

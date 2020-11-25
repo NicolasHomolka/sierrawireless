@@ -1,0 +1,42 @@
+// Specify the bundled components for your application here. This section needs to contain a list
+// of system paths to your component directory.
+
+version: 1.0.0
+maxFileSystemBytes: 512K
+sandboxed: true
+start: manual
+
+components:
+{
+}
+
+// Add the list of executables to be constructed and moved to the /bin directory of the app. The
+// executable content is a list of the components inside the executable.
+//
+// Example binding format:
+// clientExe.clientComponent.clientInterface -> serverExe.serverComponent.serverInterface
+executables:
+{
+    xmlTest = ( xmlTest_Component )
+}
+
+// The processes section specifies processes to run when the app is started including environment
+// variables, command-line arguments, limits, and fault handling actions.
+processes:
+{
+ 
+    run:
+    {
+        ( xmlTest )
+    }
+ 
+}
+
+// Bindings that allow client side API interfaces to be bound to servers found within other
+// applications in the system.
+bindings:
+{
+
+}
+
+

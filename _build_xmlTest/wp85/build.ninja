@@ -1,0 +1,168 @@
+# Build script for application 'xmlTest'
+
+# == Auto-generated file.  Do not edit. ==
+
+builddir =/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85
+
+cFlags = -I /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85 -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/interfaces -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/framework/include -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/wp85/framework/include -I/home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/libxml2/include/ -I/home/reinhard/myLeafWorkspace/CL_Agents/apps
+
+cxxFlags = -I /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85 -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/interfaces -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/framework/include -I/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/wp85/framework/include -I/home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/libxml2/include/ -I/home/reinhard/myLeafWorkspace/CL_Agents/apps
+
+ldFlags =
+
+target = wp85
+
+ifgenFlags =  --import-dir /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/interfaces --import-dir /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/framework/include --import-dir /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/wp85/framework/include --import-dir /home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/libxml2/include/ --import-dir /home/reinhard/myLeafWorkspace/CL_Agents/apps
+
+rule CompileC
+  description = Compiling C source
+  depfile = $out.d
+  command =  /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-gcc --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -MMD -MF $out.d -Wall -Werror -fvisibility=hidden  -c $in -o $out  -DLE_FILENAME=`basename $in` -DMK_TOOLS_BUILD  -DLEGATO_EMBEDDED -fPIC $cFlags
+
+rule CompileCxx
+  description = Compiling C++ source
+  depfile = $out.d
+  command =  /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-g++ --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -MMD -MF $out.d -Wall -Werror -fvisibility=hidden  -c $in -o $out  -DLE_FILENAME=`basename $in` -DMK_TOOLS_BUILD  -DLEGATO_EMBEDDED -fPIC $cxxFlags
+
+rule ProcessConfig
+  description = Merging config file
+  depfile = $in.d
+  command = /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-cpp -MMD -MF $in.d -MQ $out -P -I $builddir -E $in -o $out
+
+rule BuildExternal
+  description = Running external build step
+  command = cd $builddir/$workingdir && $
+            export CFLAGS="--sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi $cFlags" $
+            CXXFLAGS="--sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi $cxxFlags" $
+            LDFLAGS="--sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi $ldFlags" $
+            CPPFLAGS="--sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi $cppFlags" $
+            PATH="$${LEGATO_ROOT}/bin:/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin:/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/bin:/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/sbin:$$PATH" $
+            && $
+            $externalCommand
+
+rule GenInterfaceCode
+  description = Generating IPC interface code
+  command = ifgen --output-dir $outputDir $ifgenFlags $in
+
+rule GenPyApiCExtension
+  description = Generating Python API C Extension
+  command = cextgenerator.py $in -o $workDir > /dev/null
+rule CopyFile
+  description = Copying file
+  command = cp -d -f -T $in $out
+
+rule RegenNinjaScript
+  description = Regenerating build script
+  generator = 1
+  command = mkapp --dont-run-ninja "-t" "wp85" "xmlTest.adef" "-s" "/home/reinhard/myLeafWorkspace/CL_Agents/Components" "-i" "/home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/libxml2/include/"
+
+rule LinkCLib
+  description = Linking C library
+  command = /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-gcc --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -shared -o $out $in $ldFlags
+
+rule LinkCxxLib
+  description = Linking C++ library
+  command = /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-g++ --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -shared -o $out $in $ldFlags
+
+rule LinkCExe
+  description = Linking C executable
+  command = /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-gcc --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -fPIE -pie -o $out $in $ldFlags
+
+rule LinkCxxExe
+  description = Linking C++ executable
+  command = /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-g++ --sysroot=/home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-toolchain/sysroots/armv7a-neon-poky-linux-gnueabi -fPIE -pie -o $out $in $ldFlags
+
+rule CompileJava
+  description = Compiling Java source
+  command = javac -cp $classPath -d `dirname $out` $in && touch $out
+
+rule MakeJar
+  description = Making JAR file
+  command = INDIR=`dirname $in`; find $$INDIR -name '*.class' -printf "-C $$INDIR\n%P\n"|xargs jar -cf $out
+
+rule MakeKernelModule
+  description = Build kernel driver module
+  depfile = $out.d
+  command = make -C $in
+
+rule BundleFile
+  description = Bundling file
+  command = legato-install -m $modeFlags $in $out
+
+rule MakeAppInfoProperties
+  description = Creating info.properties
+  command = rm -f $out && $
+            md5=$$( ( cd $workingDir/staging && $
+                      find -P -print0 |LC_ALL=C sort -z && $
+                      find -P -type f -print0 |LC_ALL=C sort -z |xargs -0 md5sum && $
+                      find -P -type l -print0 |LC_ALL=C sort -z |xargs -0 -r -n 1 readlink $
+                    ) | md5sum) && $
+            md5=$${md5%% *} && $
+            ( echo "app.name=$name" && $
+              echo "app.md5=$$md5" && $
+              echo "app.version=$version" && $
+              echo "legato.version=`cat $$LEGATO_ROOT/version`" $
+            ) > $out
+
+rule PackApp
+  description = Packaging app
+  command = $
+            mtime=`stat -c %Y $adefPath` && $
+            find $workingDir/staging -exec touch --no-dereference --date=@$$mtime {} \; && $
+            (cd $workingDir/staging && find . -print0 | LC_ALL=C sort -z |tar --no-recursion --null -T - -cjf - ) > $workingDir/$name.$target && $
+            tarballSize=`stat -c '%s' $workingDir/$name.$target` && $
+            md5=`grep '^app.md5=' $in | sed 's/^app.md5=//'` && $
+            ( printf '{\n' && $
+              printf '"command":"updateApp",\n' && $
+              printf '"name":"$name",\n' && $
+              printf '"version":"$version",\n' && $
+              printf '"md5":"%s",\n' "$$md5" && $
+              printf '"size":%s\n' "$$tarballSize" && $
+              printf '}' && $
+              cat $workingDir/$name.$target $
+            ) > $out
+
+rule BinPackApp
+  description = Packaging app for distribution.
+  command = cp -r $stagingDir/* $workingDir/ && $
+            rm $workingDir/info.properties $workingDir/root.cfg && $
+            mtime=`stat -c %Y $adefPath` && $
+            find $workingDir -exec touch  --no-dereference --date=@$$mtime {} \; && $
+            (cd $workingDir/ && find . -print0 |LC_ALL=C sort -z  |tar --no-recursion --null -T - -cjf - ) > $out
+
+build /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/libComponent_xmlTest_Component.so: LinkCLib $builddir/component/f2047664dc0bae31ee057f3ca92350ae/obj/93c91c13e3dd55e46de31ee3195c4e6a.o $builddir/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o | /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/wp85/framework/lib/liblegato.so
+  ldFlags =  -lxml -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -lm
+
+build $builddir/component/f2047664dc0bae31ee057f3ca92350ae/obj/93c91c13e3dd55e46de31ee3195c4e6a.o: CompileC /home/reinhard/myLeafWorkspace/CL_Agents/Components/xmlTest_Component/xmlTest.c
+  cFlags = $cFlags -I$builddir/component/f2047664dc0bae31ee057f3ca92350ae/src -DLE_COMPONENT_NAME=xmlTest_Component -DLE_LOG_SESSION=xmlTest_Component_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=xmlTest_Component_LogLevelFilterPtr 
+
+build $builddir/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o: CompileC $builddir/component/f2047664dc0bae31ee057f3ca92350ae/src/_componentMain.c
+  cFlags = $cFlags -I$builddir/component/f2047664dc0bae31ee057f3ca92350ae/src -DLE_COMPONENT_NAME=xmlTest_Component -DLE_LOG_SESSION=xmlTest_Component_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=xmlTest_Component_LogLevelFilterPtr 
+
+build $builddir/app/xmlTest/obj/xmlTest/_main.c.o: CompileC /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/src/xmlTest/_main.c
+  cFlags = $cFlags  -DLE_COMPONENT_NAME=xmlTest_exe -DLE_LOG_SESSION=xmlTest_exe_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=xmlTest_exe_LogLevelFilterPtr 
+
+build $builddir/app/xmlTest/obj/xmlTest/xmlTest: LinkCExe $builddir/app/xmlTest/obj/xmlTest/_main.c.o | /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/libComponent_xmlTest_Component.so /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/wp85/framework/lib/liblegato.so /home/reinhard/myLeafWorkspace/leaf-data/P1_red85/wp85-legato/build/$target/framework/lib/liblegato.so
+  ldFlags = -rdynamic -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" -L "-L/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj" -lComponent_xmlTest_Component -lxml "-L/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj" -lComponent_xmlTest_Component -lxml "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -ldl -lm $ldFlags
+
+build $builddir/app/xmlTest/staging/read-only/lib/libxml2.so : BundleFile /home/reinhard/.leaf/wp85-toolchain_SWI9X15Y_07.14.01.00-linux64/sysroots/armv7a-neon-poky-linux-gnueabi/usr/include/lib/libxml2.so
+  modeFlags = u+rw-x,g+r-x,o-x+r-w
+build $builddir/app/xmlTest/staging/read-only/lib/libComponent_xmlTest_Component.so : BundleFile /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/libComponent_xmlTest_Component.so
+  modeFlags = u+rw+x,g+r+x,o+x+r-w
+
+build $builddir/app/xmlTest/staging/read-only/bin/xmlTest : BundleFile $builddir/app/xmlTest/obj/xmlTest/xmlTest
+  modeFlags = u+rw+x,g+r+x,o+x+r-w
+
+build $builddir/app/xmlTest/staging/info.properties : MakeAppInfoProperties | $builddir/app/xmlTest/staging/read-only/lib/libComponent_xmlTest_Component.so $builddir/app/xmlTest/staging/read-only/lib/libxml2.so $builddir/app/xmlTest/staging/read-only/bin/xmlTest $builddir/app/xmlTest/staging/root.cfg
+  name = xmlTest
+  version = 1.0.0
+  workingDir = $builddir/app/xmlTest
+
+build xmlTest.$target.update: PackApp $builddir/app/xmlTest/staging/info.properties
+  name = xmlTest
+  adefPath = /home/reinhard/myLeafWorkspace/CL_Agents/apps/xmlTest.adef
+  version = 1.0.0
+  workingDir = $builddir/app/xmlTest
+
+build /home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/build.ninja: RegenNinjaScript | /home/reinhard/myLeafWorkspace/CL_Agents/Components/xmlTest_Component/Component.cdef
+

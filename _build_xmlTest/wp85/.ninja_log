@@ -1,0 +1,19 @@
+# ninja log v5
+14	69	1606312942188777100	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/staging/read-only/lib/libxml2.so	bf547bba9eebfda0
+6	564	1606312942679795700	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o	9212bbbc6564f71
+9	573	1606312942689830700	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/obj/xmlTest/_main.c.o	1b762baa892e395b
+32	524	1606312958845063100	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/obj/xmlTest/_main.c.o	dd16d3c61772c64d
+29	536	1606312958852642800	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o	aec3c6bbf4e6388a
+25	573	1606312958894241300	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/93c91c13e3dd55e46de31ee3195c4e6a.o	aaa4e2830f74a5a
+573	735	1606312959049893300	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/libComponent_xmlTest_Component.so	b31797e93350c2f6
+739	784	1606312959107895100	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/staging/read-only/lib/libComponent_xmlTest_Component.so	c2691e473087b23e
+0	53	1606313276058979300	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/build.ninja	8ef393f750fcde71
+13	510	1606313276594149800	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/obj/xmlTest/_main.c.o	dd16d3c61772c64d
+8	514	1606313276598150800	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o	aec3c6bbf4e6388a
+5	542	1606313276627149300	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/93c91c13e3dd55e46de31ee3195c4e6a.o	aaa4e2830f74a5a
+0	50	1606313284874870200	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/build.ninja	8ef393f750fcde71
+12	511	1606313285407686700	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/_componentMain.c.o	aec3c6bbf4e6388a
+16	516	1606313285412685800	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/obj/xmlTest/_main.c.o	dd16d3c61772c64d
+9	553	1606313285449474900	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/93c91c13e3dd55e46de31ee3195c4e6a.o	aaa4e2830f74a5a
+553	696	1606313285587164600	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/component/f2047664dc0bae31ee057f3ca92350ae/obj/libComponent_xmlTest_Component.so	b1a29b9156006fd0
+701	746	1606313285646198300	/home/reinhard/myLeafWorkspace/CL_Agents/apps/_build_xmlTest/wp85/app/xmlTest/staging/read-only/lib/libComponent_xmlTest_Component.so	c2691e473087b23e
